@@ -26,6 +26,9 @@ public class TestMeteoDAO {
 //		System.out.println(dao.getAllRilevamentiLocalitaMese(5, "Torino"));
 //		System.out.println(dao.getAvgRilevamentiLocalitaMese(5, "Torino"));
 		
+		System.out.println(dao.getCitta());
+		
+		System.out.println(dao.getUmiditaByGiornoLocalita(2, 12, "Torino"));
 
 	}
 
