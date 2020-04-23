@@ -124,5 +124,31 @@ public class MeteoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public List<Rilevamento> getRilevPrimi15GiorniMese(int mese){
+		final String sql="SELECT Localita, DATA, Umidita FROM situazione WHERE MONTH(DATA)=?  AND DAY(DATA)<=15";
+		List<Rilevamento> rilevamenti = new ArrayList<Rilevamento>();
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, mese);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				Rilevamento r = new Rilevamento(rs.getString("Localita"), rs.getDate("Data"), rs.getInt("Umidita"));
+				rilevamenti.add(r);
+				
+			}
+
+			conn.close();
+			return rilevamenti;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
 }
