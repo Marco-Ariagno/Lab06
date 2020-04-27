@@ -41,6 +41,10 @@ public class Citta {
 	public void setRilevamenti(List<Rilevamento> rilevamenti) {
 		this.rilevamenti = rilevamenti;
 	}
+	
+	public void addCounter() {
+		counter++;
+	}
 
 	public int getCounter() {
 		return counter;
